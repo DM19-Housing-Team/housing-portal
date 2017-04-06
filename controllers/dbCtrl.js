@@ -14,7 +14,7 @@ module.exports = {
     GetCampuses: function(req,res,next){
         db.get_campuses(function(err, prod) {
             console.log("get campi: ", err, prod);
-            res.status(200).send(prod);
+            res.status(200).json(prod);
         })
     },
     AddCampus: function(req,res,next){

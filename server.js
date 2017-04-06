@@ -36,6 +36,12 @@ app.put('/api/cohort', controller.EditCohort);
 app.post('/api/cohort', controller.AddCohort);
 app.delete('/api/cohort', controller.DeleteCohort);
 
+// accessing apartment CRUD functions
+app.get('/api/cohort', controller.GetApartments);
+app.put('/api/cohort', controller.EditApartment);
+app.post('/api/cohort', controller.AddApartment);
+app.delete('/api/cohort', controller.DeleteApartment);
+
 
 
 
