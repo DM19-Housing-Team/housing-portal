@@ -20,6 +20,7 @@ export function getApartments() {
 }
 
 export function createApartment(props) {
+  console.log(props)
   const url = "/api/apartment";
   const request = axios.post(url, props)
   return {
@@ -96,4 +97,3 @@ export function getCohorts() {
     payload: request
   }
 }
-

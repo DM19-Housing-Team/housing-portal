@@ -8,7 +8,7 @@ class NavBar extends Component {
             <div className="navbar-container">
                 <img src={require("../styles/DevMtnLogo.png")} className="navbar-logo"/>
                 <ul className="nav-links">
-                   <li> <Link to="/admin"> Admin </Link> </li>
+                   <li> <Link to="/"> Admin </Link> </li>
                    <li> <Link to="/apartments"> Apartments </Link></li>
                    <li> <Link to="/students"> Students </Link></li>
                 </ul>

@@ -40,7 +40,7 @@ class CreateNewApartment extends Component {
       props.apartment_id = this.props.apartment_id;
       for (let i=0; i<this.state.rooms.length; i++) {
         console.log("adminform props", props[i+""])
-        this.props.dispatch(createRoom({apartment_id: props.apartment_id, number_of_beds: props[i]}));
+        this.props.dispatch(createRoom({apartment_id: props.apartment_id, number_of_beds: props[i+""]}));
       }
       this.reset();
       alert("You created a new apartment");

@@ -36,10 +36,10 @@ class Room extends Component {
                         className="remove-icon"
                         onClick= { () => props.dispatch(removeStudentFromApt(studentObj)) }/>
                   <Bed key={i} 
-                  allowedDropEffect='move' 
-                  roomID={props.room_id}
-                  studentID={props}>
-                  {props.all_student_info[i].first_name}
+                    allowedDropEffect='move' 
+                    roomID={props.room_id}
+                    studentID={props}>
+                    {props.all_student_info[i].first_name}
                   </Bed>
               </div>
               ) 

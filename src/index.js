@@ -42,8 +42,8 @@ ReactDOM.render(
 
   <Provider store={ createStoreWithMiddleware(reducers)} >
     <Router history={ browserHistory } >
-      <Route path="/" component={ App } />
-      <Route path="/admin" component={Admin} />
+      {/* <Route path="/" component={ App } /> */}
+      <Route path="/" component={Admin} />
       <Route path="/Apartments" component={Apartment} />
       <Route path="/students" component={Student} />
       <Route path="/studentview" component={StudentView} />

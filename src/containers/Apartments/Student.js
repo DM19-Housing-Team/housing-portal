@@ -44,6 +44,7 @@ const StudentSource = {
        }
         
       Student.store.dispatch(addStudentToApt(studentObj))
+      Student.forceUpdate();
       } else {
         alertMessage = 'You are just the right age.'
         alertMessage = `You cannot ${dropResult.dropEffect} an item into the ${dropResult.name}`;
@@ -75,7 +76,7 @@ class Student extends Component {
         <div className="aptcard-button">
           <img src="https://s3.amazonaws.com/37assets/svn/1065-IMG_2529.jpg" className="aptcard-image" />
           {this.props.name}, {this.props.age} <br />
-          {this.props.gender} <br />S.ID: {this.props.id} <br/>
+          {this.props.gender} <br />
         </div>,
       )
     );

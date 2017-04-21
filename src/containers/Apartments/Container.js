@@ -52,7 +52,7 @@ class Container extends Component {
     const { boxes, dustbins } = this.state;
     let state = this.state;
     //console.log("STUDENT INFO:", this.props.all)
-    let students = this.props.all.map( studentInfo => (
+    let students = this.props.all.filter(student => student.room_id == null).map( studentInfo => (
       <Student  name={`${studentInfo.first_name} ${studentInfo.last_name}`}
                 eligibility={studentInfo.eligibility}
                 age={moment().diff(studentInfo.dob, 'years', false)}
@@ -72,7 +72,8 @@ class Container extends Component {
       return _.pick(currentObj, "id", "room_id", "first_name", "last_name")
     })
     let studentsWithRooms = this.props.all.map( student => student.id )
-    let roomData = this.props.rooms.rooms
+    let roomData = this.props.rooms.rooms;
+    console.log(roomData)
 
 
     let apartments = this.props.apartments;
@@ -86,7 +87,9 @@ class Container extends Component {
             return apartment[filterBy] == filterValue});
         }
       })
-    let apartmentsList = apartments.map( apartment => {
+    let apartmentsList = [];
+    if (apartments[0] && roomData) {
+    apartmentsList = apartments.map( apartment => {
     let displayRooms = roomData.filter(function(room) { return (room.apartment_id == apartment.id) })
                                   .map(room => (<li><Room key={room.id}
                                                           number_of_beds={room.number_of_beds}
@@ -134,7 +137,7 @@ class Container extends Component {
                                     ///////////////////////////////////////////
                                   )
                               })
-                              console.log("apartmentlist", apartmentsList)
+                              console.log("apartmentlist", apartmentsList)}
 
     return (
     //  <DragDropContextProvider backend={HTML5Backend}>

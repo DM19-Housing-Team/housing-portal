@@ -7,7 +7,7 @@ var path = require("path");
 var controller = require('./controllers/dbCtrl');
 
 var app = express();
-var port = 3005;
+var port = 3006;
 
 app.use(express.static(__dirname + "/build"));
 app.use(bodyParser.json());

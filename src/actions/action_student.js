@@ -46,6 +46,6 @@ export function removeStudentFromApt(studentObj) {
   console.log('request', request)
   return {
     type: REMOVE_STUDENT_FROM_APT,
-    payload: "testy load"
+    payload: request
   }
 }

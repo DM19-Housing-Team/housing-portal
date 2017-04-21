@@ -34,7 +34,7 @@ class Student extends Component {
     render() {
 
         let students = this.props.all;
-        console.log(students);
+        console.log("stydt",students);
          if (students[0]) {
           let state = this.state;
           ["housing_eligibility", "deposit_paid", "age", "accomodations", "campus_id", "cohort_id", "gender"].forEach(function(filterBy) {
@@ -59,7 +59,7 @@ class Student extends Component {
          }
 
         const StudentList = students.map((students) => (
-                <li key={students.email}> <StudentCards
+                <li key={students.id}> <StudentCards
                 image={students.image}
                 name={`${students.first_name} ${students.last_name}`}
                 first_name={ students.first_name }

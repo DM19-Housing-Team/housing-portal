@@ -52,7 +52,7 @@ import { GET_COHORTS, CREATE_COHORT, DELETE_COHORT, EDIT_COHORT, GET_CAMPUSES } 
 
 
 export function cohortReducer(state=INITIAL_STATE, action) {
-  console.log('reducer state: ', action.payload);
+  
   switch(action.type) {
     case GET_COHORTS:
       return { all: action.payload.data }

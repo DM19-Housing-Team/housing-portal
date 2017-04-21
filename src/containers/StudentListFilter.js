@@ -45,7 +45,7 @@ class StudentListFilter extends Component {
                     </li>
 
                 <li>
-                        <input type="checkbox" name="housing_eligibility" value={ this.props.housing } onChange={ this.handleChecked.bind(this, "housing", !this.props.housing) } /> Need Housing
+                        <input type="checkbox" name="housing_eligibility" value={ this.props.housing_eligibility } onChange={ this.handleChecked.bind(this, "housing_eligibility", !this.props.housing_eligibility) } /> Need Housing
                     </li>
                     <li>
                         <input type="checkbox" name="deposit" value={ this.props.deposit_paid} onChange={ this.handleChecked.bind(this, "deposit_paid", !this.props.deposit_paid) } /> Deposit Paid
