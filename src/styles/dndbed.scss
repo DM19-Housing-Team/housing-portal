@@ -8,6 +8,9 @@
     width: 90%;
     overflow-y: scroll;
     height: 469px;
+    background: $medium-gray;
+    color: $white;
+    font-family: "Nunito", sans-serif;    
 }
 
 .apartment-container::-webkit-scrollbar-track
@@ -73,7 +76,7 @@
 
 .apt-holder {
     width: 90%;
-    background: $medium-gray;
+    // background: $dark-gray;
     margin-top:24px;
     text-align:center;
     position: relative;
@@ -83,7 +86,7 @@
     font-size: 1.5rem;
     font-weight: bold;
     width: 90%;
-    background: $medium-gray;
+    background: $dark-gray;
     cursor: pointer;
 }
 
@@ -93,7 +96,7 @@
     justify-content: space-around;
     align-items: center;
     list-style:none;
-    background: $light-gray;
+    // background: $light-gray;
 }
 
 .apt-li {
@@ -120,4 +123,11 @@
 
 .panel {
     border-radius: 6px;
+}
+
+.panel-body {
+    // margin: 0;
+    // padding: 0;
+    border-top: none;
+    border-top-color: none;
 }

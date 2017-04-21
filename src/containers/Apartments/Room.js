@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Bed from './Bed';
 import "../../styles/dndbed.scss";
-
+import {removeStudentFromApt} from '../../actions/action_student'
+import {connect} from "react-redux"
 
 class Room extends Component {
  
@@ -25,17 +26,20 @@ class Room extends Component {
       
       (function(i, props) {
       if (props.all_student_info[i].room_id == props.room_id) {
-        
+          let studentObj = {
+            student_id : props.all_student_info[i].id,
+            room_id : props.room_id
+          }
               listBeds.push(
                 <div className="bed-holder">
                   <img src={require("../../styles/icons/error.svg")} 
                         className="remove-icon"
-                        onClick= { () => alert(`Removed ${props.all_student_info[i].first_name} with ID ${props.all_student_info[i].id} from RoomID ${props.all_student_info[i].room_id}`)}/>
+                        onClick= { () => props.dispatch(removeStudentFromApt(studentObj)) }/>
                   <Bed key={i} 
-                  allowedDropEffect='move' 
-                  roomID={props.room_id}
-                  studentID={props}>
-                  {props.all_student_info[i].first_name}
+                    allowedDropEffect='move' 
+                    roomID={props.room_id}
+                    studentID={props}>
+                    {props.all_student_info[i].first_name}
                   </Bed>
               </div>
               ) 
@@ -63,4 +67,4 @@ class Room extends Component {
   }
 }
 
-export default Room;
+export default connect()(Room);

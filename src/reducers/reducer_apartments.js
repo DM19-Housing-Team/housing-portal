@@ -23,7 +23,7 @@ export function apartmentsReducer(state=INITIAL_STATE, action) {
       return { all: action.payload.data};
       break;
     case CREATE_APARTMENT:
-      console.log(action.payload.data)
+      console.log("creatapart", action.payload.data)
       return {
         all: [...state.all, action.payload.data],
         apartment_id: action.payload.data[0].id
@@ -54,6 +54,7 @@ export function roomReducer(state=INITIAL_STATE, action) {
       return { rooms: action.payload.data};
       break;
     case CREATE_ROOM:
+    console.log(action.payload.data, "create room")
       return { all: [...state.all, action.payload.data[0]] };
       break;
     default:
@@ -71,4 +72,3 @@ export function campusReducer(state=INITIAL_STATE, action) {
       return state;
   }
 }
-

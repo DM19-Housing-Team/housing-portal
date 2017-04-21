@@ -40,7 +40,6 @@ export function createApartment(props) {
 export function getBuildings(props) {
   const url = "/api/building";
   const request = axios.get(url, props)
-  console.log("ADDRESS",request);
 
   return {
     type: GET_BUILDINGS,
@@ -67,7 +66,6 @@ export function getRooms() {
   }
 }
 export function createRoom(props) {
-  console.log("RR",props);
   const url = "/api/room";
   const request = axios.post(url, props)
 
@@ -80,7 +78,6 @@ export function createRoom(props) {
 export function getCampuses() {
   const url = "api/campus";
   const request = axios.get(url);
-  console.log("request", request);
   return {
     type: GET_CAMPUSES,
     payload: request
@@ -90,10 +87,8 @@ export function getCampuses() {
 export function getCohorts() {
   const url = "api/cohort";
   const request = axios.get(url);
-  console.log("request", request);
   return {
     type: GET_COHORTS,
     payload: request
   }
 }
-

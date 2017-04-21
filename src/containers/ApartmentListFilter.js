@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Panel } from "react-bootstrap";
 import "../styles/filter.scss";
+import CampusSelector from "./CampusSelector";
 
 class ApartmentListFilter extends Component {
         constructor(props) {
@@ -10,35 +11,32 @@ class ApartmentListFilter extends Component {
         };
     }
 
+    handleChange(change, e) {
+      console.log("type", e.target.name, e.target.value);
+      if (e.target.name === "preferred_gender" || e.target.name === "campus_id")
+        this.props.handleChange(e.target.name, e.target.value)
+      else
+        this.props.handleChange(e.target.name, change)
+    }
+
     render() {
         return (
+       
             <div className="filter-container">
-                <div>
-                    <Button onClick={ () => this.setState({ open: !this.state.open })}>
-                        Filter Results
-                    </Button>
-                    <Panel collapsible expanded={ this.state.open }>
-                        <div>
-                            Campus
-                            <select>
-                                <option value="1">Provo</option>
-                                <option value="2">Salt Lake City</option>
-                                <option value="3">Dallas</option>
-                            </select>
-                        </div>
-                        <div>
-                            <input type="checkbox" name="age" value="age" /> 21+
-                        </div>
-                        <div>
-                            <input type="checkbox" name="open" value="" /> Open
-                        </div>
-                        <div>
-                            <input type="radio" name="gender" value="male" /> Male
-                            <input type="radio" name="gender" value="female" /> Female 
-                        </div>
-                    </Panel>
-                </div>
+                <ul>
+                    <li>Campus <br /><CampusSelector handleChange={ this.handleChange.bind(this, this.props.campus_id)} /></li> 
+                    <li><input type="checkbox" name="over_21" value={ this.props.over_21 } onChange={ this.handleChange.bind(this, !this.props.over_21) } /> 21+ </li>
+                    <li><input type="checkbox" name="open" value={ this.props.open } onChange={ this.handleChange.bind(this, !this.props.open)} /> Open </li>
+                    <li><select name="preferred_gender" defaultValue="" onChange={ this.handleChange.bind(this, this.props.preferred_gender) }>
+                    <option value="M">Male</option>
+                            <option value="F">Female</option>
+                            <option value="">Any</option>
+                    </select></li>
+                
+                </ul>
             </div>
+
+
         )
     }
 }

@@ -23,11 +23,11 @@ export function studentReducer(state=INITIAL_STATE, action) {
       break;
     case ADD_STUDENT_TO_APT :
     console.log("reducer_student", action.payload.data)
-      return { all: action.payload.data }
+      return { all : action.payload.data  }
       break;
     case REMOVE_STUDENT_FROM_APT :
     console.log("reducer_student", action.payload.data)
-      return {all : action.payload.data }
+      return { all : action.payload.data }
       break;
   }
   return state;

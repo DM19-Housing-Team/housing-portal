@@ -12,7 +12,8 @@
     overflow-y: scroll;
     padding-right: 50px;
     padding-left: 45px;
-    padding-top: 90px;
+    padding-top: 195px;
+
 
     li {
         list-style-type: none;
@@ -56,14 +57,30 @@
 .panel-body {
     margin: 0;
     padding: 0;
+    border-top: none;    
+}
+
+.panel-group .panel-heading + .panel-collapse > .panel-body,
+.panel-group .panel-heading + .panel-collapse > .list-group {
+  border-top: none;
 }
 
 .panel-title {
-    background: $bg-gray;
-    color: $light-gray;
-    font-size: 3rem;
-    padding: 24px;
+    border-top: none;
+    background: $dark-gray;
+    color: $white;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85px;
+    // border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: -2px;
+}
 
+.panel-title:hover {
+    background: $blue;
 }
 
 .edit-apt {
@@ -90,4 +107,15 @@
 .panel-settings:hover {
     opacity: 1;
     transition: all .2s;
+}
+
+.student-container {
+    width: 15%;
+    color: #fff;
+    background-color: $dark-gray;
+    text-align:center;
+    border-radius: 0 0 10px 10px;
+    font-family: "Nunito", sans-serif;
+    display: flex;
+    align-items: center;
 }

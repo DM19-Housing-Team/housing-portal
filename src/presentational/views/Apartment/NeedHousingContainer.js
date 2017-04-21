@@ -157,11 +157,11 @@ class NeedHousingContainer extends Component {
         ))
 
         return (
-            <DragDropContextProvider backend={HTML5Backend}>
+            
                 <div className="housing-container">
                     { StudentList }
                 </div>
-            </DragDropContextProvider>
+           
         );
     }
 }

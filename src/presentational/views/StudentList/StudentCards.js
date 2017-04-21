@@ -51,7 +51,7 @@ class StudentCards extends Component {
                     cohort={this.props.cohort}
                     room={this.props.room}
                     address={`${this.props.street_address} in ${this.props.city}, ${this.props.state}, ${this.props.country}`}
-                    
+                    street_address={this.props.street_address}
                     eligibility={this.props.eligibility}
                     deposit_paid={this.props.deposit_paid}
                     student_id={this.props.student_id}

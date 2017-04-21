@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Panel, Button, DropdownButton, MenuItem } from "react-bootstrap";
-import "../../../styles/admin.scss";
+// import "../../../styles/admin.scss";
 import "../../../styles/roompanel.scss";
 import ApartmentsList from "../../../containers/Apartments/index";
 //import Container from '../../../containers/Multiple Targets/Container'

@@ -10,7 +10,8 @@ import { getStudents } from "../../actions/action_student"
 import { getApartments, getRooms } from "../../actions/action_apartments"
 import moment from "moment"
 import { Panel, Accordion } from "react-bootstrap";
-import { _pick } from 'lodash'
+import { _pick } from 'lodash';
+import ApartmentListFilter from "../ApartmentListFilter";
 
 const style = {
   borderRadius: '5px',
@@ -24,12 +25,15 @@ const style = {
 class Container extends Component {
 
   constructor(props) {
-    super(props)  
+    super(props)
     this.state = {
       open: false,
-      bedList: ''
-    } 
-  
+      bedList: '',
+      over_21: false,
+      preferred_gender: "",
+      campus_id: 0
+    }
+
   }
 
   componentWillMount() {
@@ -37,12 +41,18 @@ class Container extends Component {
     this.props.dispatch(getApartments())
     this.props.dispatch(getRooms())
   }
-  
+
+  handleChange(type, val) {
+    this.setState({
+      [type]: val
+    })
+  }
 
   render() {
     const { boxes, dustbins } = this.state;
-    console.log("STUDENT INFO:", this.props.all)
-    let students = this.props.all.map( studentInfo => (
+    let state = this.state;
+    //console.log("STUDENT INFO:", this.props.all)
+    let students = this.props.all.filter(student => student.room_id == null).map( studentInfo => (
       <Student  name={`${studentInfo.first_name} ${studentInfo.last_name}`}
                 eligibility={studentInfo.eligibility}
                 age={moment().diff(studentInfo.dob, 'years', false)}
@@ -57,48 +67,88 @@ class Container extends Component {
     // We will sed this to through our Room component
     // To display the students in the correct rooms
     //
-    
+
     let studentRoomInfo = _.map(this.props.all, function(currentObj) {
       return _.pick(currentObj, "id", "room_id", "first_name", "last_name")
     })
     let studentsWithRooms = this.props.all.map( student => student.id )
-    let roomData = this.props.rooms.rooms
+    let roomData = this.props.rooms.rooms;
 
-    console.log("apartments", this.props.apartments)
-    let apartments = this.props.apartments.map( apartment => { 
+
+    let apartments = this.props.apartments;
+    if (apartments[0])
+      ["over_21", "preferred_gender", "campus_id"].forEach(filterBy => {
+        let filterValue = state[filterBy];
+        if (filterValue) {
+          apartments = apartments.filter(apartment => {
+            return apartment[filterBy] == filterValue});
+        }
+      })
+    let apartmentsList = [];
+    if (apartments[0] && roomData) {
+    apartmentsList = apartments.map( apartment => {
     let displayRooms = roomData.filter(function(room) { return (room.apartment_id == apartment.id) })
-                                  .map(room => (<li><Room key={room.id} 
+                                  .map(room => (<li><Room key={room.id}
                                                           number_of_beds={room.number_of_beds}
                                                           room_id={room.id}
                                                           all_student_info={studentRoomInfo}>
                                                   </Room></li>))
-                                                  let headerMsg = `Apt ${apartment.apartment_number}` 
-                                          return (
-                                          <Panel header={headerMsg}
-                                                  eventKey={apartment.id} 
-                                                  className="apt-holder">
-                                                <div className="panel-settings"><img src={require('../../styles/icons/edit.svg')} className="panel-settings"/></div>
-                                              {/*   PUT MODAL CODE HERE  */} 
-                                                <ul className="apt-ul">
-                                                  {displayRooms} 
-                                                </ul>
-                                            </Panel> )})   
-                                            /////////////////////////////////////////
+
+                                                  let headerMsg = `Apt ${apartment.apartment_number}`
+
+                                  return (
+                                  /*<div className="panel-container">
+                                    <div className="panel-info">{panelInfo}</div>
+
+                                    <div className="panel-settings"><img src={require('../../styles/icons/edit.svg')} /></div>
+                                  </div>*/
+                                    // <div className="apt-holder">
+                                    //   <div onClick={ ()=> this.setState({ open: !this.state.open })}>
+                                    //     <h3>
+                                    //     {headerMsg}
+                                    //     {apartment.id}
+                                    //     </h3>
+                                    //   </div>
+                                    //   <Panel collapsible expanded={ this.state.open }>
+                                    //       <div className="panel-settings"><img src={require('../../styles/icons/edit.svg')} className="panel-settings"/></div>
+                                    //     {/*   PUT MODAL CODE HERE  */}
+                                    //       <ul className="apt-ul">
+                                    //         {displayRooms}
+                                    //       </ul>
+                                    //   </Panel>
+                                    // </div>
+
+                                      <Panel header={headerMsg}
+                                            eventKey={apartment.id}
+                                            className="apt-holder">
+                                          <div className="panel-settings"><img src={require('../../styles/icons/edit.svg')} className="panel-settings"/></div>
+                                        {/*   PUT MODAL CODE HERE  */}
+                                          <ul className="apt-ul">
+                                            {displayRooms}
+                                          </ul>
+                                      </Panel>
+
+
+                                    /////////////////////////////////////////
                                     // For edit apartment, edit the <div className="panel-settings"><img src={require('../../styles/icons/edit.svg')} className="panel-settings"/></div>
                                     ///////////////////////////////////////////
-    
+                                  )
+                              })
+                              console.log("apartmentlist", apartmentsList)}
+
     return (
-     
+    //  <DragDropContextProvider backend={HTML5Backend}>
         <div>
+          <ApartmentListFilter over_21={ this.state.over_21 } preferred_gender={ this.state.gender } campus_id={ this.state.campus_id} handleChange={ this.handleChange.bind(this) }/>
           <Accordion className="apartment-container">
-            {apartments}
+            {apartmentsList}
           </Accordion>
           <div className="housing-container">
+
             {students}
           </div>
         </div>
-      
-    );
+    )
   }
 }
 
@@ -111,4 +161,3 @@ function mapStateToProps(state) {
   }
 }
 export default connect(mapStateToProps)(Container)
-

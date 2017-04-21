@@ -15,32 +15,32 @@ class CreateNewStudent extends Component {
 
     this.state = {
       open: false,
-      first_name: null,     //
-      last_name: null,      //
-      street_address: null,  //
-      city: null,           //
-      state: null,          //
-      country: null,        //
-      post_code: null,      //
-      phone: null,        //
-      email: null,        //
-      slack: null,        //
-      dob: null,          //
-      gender: null,       //
-      cohort: null,       //
-      car_info: null,
-      arrive_date: null,    //
-      leave_date: null,     //
-      housing_eligibility: null,
-      deposit_paid: null,   //
-      accomodations: null,
-      notes: null,
-      room_id: null,
-      studentLocation: null,
+      first_name: "",     //
+      last_name: "",      //
+      street_address: "",  //
+      city: "",           //
+      state: "",          //
+      country: "",        //
+      post_code: "",      //
+      phone: "",        //
+      email: "",        //
+      slack: "",        //
+      dob: "",          //
+      gender: "",       //
+      cohort: "",       //
+      car_info: "",
+      arrive_date: "",    //
+      leave_date: "",     //
+      housing_eligibility: "",
+      deposit_paid: "",   //
+      accomodations: "",
+      notes: "",
+      room_id: 0,
+      studentLocation: "",
     }
 
-    
-    
+
+
 
     this.handleInputChange = this.handleInputChange.bind(this)
     this.clearData = this.clearData.bind(this)
@@ -112,21 +112,21 @@ class CreateNewStudent extends Component {
 
         const lat2 = this.props.studentLocation.lat;
         const lng2 = this.props.studentLocation.lng;
-        
+
         function distanceLatAndLng(schoolLat,schoolLng,lat2,lng2) {
           const R = 3959; // Radius of the earth in mi
           const dLat = deg2rad(lat2-schoolLat);  // deg2rad below
-          const dLon = deg2rad(lng2-schoolLng); 
-          const a = 
+          const dLon = deg2rad(lng2-schoolLng);
+          const a =
             Math.sin(dLat/2) * Math.sin(dLat/2) +
-            Math.cos(deg2rad(schoolLat)) * Math.cos(deg2rad(lat2)) * 
+            Math.cos(deg2rad(schoolLat)) * Math.cos(deg2rad(lat2)) *
             Math.sin(dLon/2) * Math.sin(dLon/2)
-            ; 
-          const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+            ;
+          const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
           const d = R * c; // Distance in mi
           if (d >= 50) {
            this.state.housing_eligibility = true
-            
+
           } else {
             this.state.housing_eligibility = false
           }
@@ -167,8 +167,8 @@ class CreateNewStudent extends Component {
                   <h1>General</h1>
                 <ul className="student-ul">
 
-                  <li><input type="text" placeholder="First" name="first_name" ref="first_name" className="student-40" onChange={this.handleInputChange}/></li>
-                  <li><input type="text" placeholder="Last" name="last_name" ref="last_name" className="student-40" onChange={this.handleInputChange}/></li>
+                  <li><input type="text" placeholder="First Name" name="first_name" ref="first_name" className="student-40" onChange={this.handleInputChange}/></li>
+                  <li><input type="text" placeholder="Last Name" name="last_name" ref="last_name" className="student-40" onChange={this.handleInputChange}/></li>
                   <li>DOB <br/> <input type="date" name="dob" ref="dob" className="student-20" onChange={this.handleInputChange}/> </li>
                   <li>
                     <div className="item-container">
@@ -231,11 +231,11 @@ class CreateNewStudent extends Component {
                   <li><input type="text" placeholder="Email" name="email" ref="email" className="student-40" onChange={this.handleInputChange}/></li>
                   <li><input type="text" placeholder="Slack" name="slack" ref="slack" className="student-40" onChange={this.handleInputChange}/></li>
                   <li><input type="text" placeholder="Phone" name="phone" ref="phone" className="student-40" onChange={this.handleInputChange}/></li>
-                  <li><input type="text" placeholder="address" name="street_address" ref="street_address" className="student-40" onChange={this.handleInputChange}/></li>
-                  <li><input type="text" placeholder="city" name="city" ref="city" className="student-30" onChange={this.handleInputChange}/>
-                      <input type="text" placeholder="state" name="state" ref="state" className="student-10" onChange={this.handleInputChange}/> </li>
-                  <li><input type="text" placeholder="country" name="country" ref="country" className="student-30" onChange={this.handleInputChange}/>
-                      <input type="text" placeholder="zip" name="post_code" ref="post_code" className="student-10" onChange={this.handleInputChange}/></li>
+                  <li><input type="text" placeholder="Address" name="street_address" ref="street_address" className="student-40" onChange={this.handleInputChange}/></li>
+                  <li><input type="text" placeholder="City" name="city" ref="city" className="student-30" onChange={this.handleInputChange}/>
+                      <input type="text" placeholder="State" name="state" ref="state" className="student-10" onChange={this.handleInputChange}/> </li>
+                  <li><input type="text" placeholder="Country" name="country" ref="country" className="student-30" onChange={this.handleInputChange}/>
+                      <input type="text" placeholder="Zip" name="post_code" ref="post_code" className="student-10" onChange={this.handleInputChange}/></li>
                   <ul className="student-ul">
                     <li><Button onClick={ () =>
                       { this.props.dispatch(getEligibility(`${this.state.street_address} ${this.state.city} ${this.state.state}`))
@@ -262,7 +262,7 @@ class CreateNewStudent extends Component {
                   <li><input type="text" placeholder="Accommodations" name="accomodations" ref="accomodations"  className="student-80" onChange={this.handleInputChange}/></li>
                 </ul>
                 <ul className="student-ul">
-                  <li><input type="text" placeholder="car info" name="car_info" ref="car_info" className="student-80" onChange={this.handleInputChange}/></li>
+                  <li><input type="text" placeholder="Car Info" name="car_info" ref="car_info" className="student-80" onChange={this.handleInputChange}/></li>
                 </ul>
                 <ul className="student-ul">
                   <li><Button onClick={ () => {this.props.dispatch(createStudent(this.state))}}>     Add Student     </Button></li>

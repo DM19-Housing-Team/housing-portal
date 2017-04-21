@@ -20,7 +20,6 @@ class Student extends Component {
       }
   }
     handleChecked(type, val) {
-      console.log(type, val);
       this.setState({
         [type]: val
       });
@@ -34,7 +33,6 @@ class Student extends Component {
     render() {
 
         let students = this.props.all;
-        console.log(students);
          if (students[0]) {
           let state = this.state;
           ["housing_eligibility", "deposit_paid", "age", "accomodations", "campus_id", "cohort_id", "gender"].forEach(function(filterBy) {
@@ -47,7 +45,6 @@ class Student extends Component {
                 })
               } else if (filterBy === "gender" || filterBy === "campus_id" || filterBy === "cohort_id") {
                   students = students.filter(function(student) {
-                    console.log(filterValue, filterBy);
                     return student[filterBy] == filterValue;
                 })
               } else {
@@ -60,7 +57,7 @@ class Student extends Component {
          }
 
         const StudentList = students.map((students) => (
-                <li key={students.email}> <StudentCards
+                <li key={students.id}> <StudentCards
                 image={students.image}
                 name={`${students.first_name} ${students.last_name}`}
                 first_name={ students.first_name }
@@ -84,6 +81,7 @@ class Student extends Component {
                 post_code={ students.post_code }
                 arrive_date={ students.arrive_date }
                 leave_date={ students.leave_date }
+                street_address= { students.street_address }
                 /></li>
         ))
         return (

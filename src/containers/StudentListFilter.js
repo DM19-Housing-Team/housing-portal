@@ -13,18 +13,14 @@ class StudentListFilter extends Component {
     }
 
     handleChecked(type, checked, e) {
-
-      console.log("type: ", type, "checked", checked,"e", e);
       if (type === "age")
         checked ? this.props.handleChecked(type, 21) : this.props.handleChecked(type, 0);
-        else
+      else
         this.props.handleChecked(type, checked);
-
 
     }
 
     handleChange(e) {
-        console.log(e.target.name, e.target.value);
         this.props.handleChecked(e.target.name, e.target.value);
     }
 
@@ -46,7 +42,7 @@ class StudentListFilter extends Component {
                     </li>
 
                 <li>
-                        <input type="checkbox" name="housing_eligibility" value={ this.props.housing } onChange={ this.handleChecked.bind(this, "housing", !this.props.housing) } /> Need Housing
+                        <input type="checkbox" name="housing_eligibility" value={ this.props.housing_eligibility } onChange={ this.handleChecked.bind(this, "housing_eligibility", !this.props.housing_eligibility) } /> Need Housing
                     </li>
                     <li>
                         <input type="checkbox" name="deposit" value={ this.props.deposit_paid} onChange={ this.handleChecked.bind(this, "deposit_paid", !this.props.deposit_paid) } /> Deposit Paid

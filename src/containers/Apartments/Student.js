@@ -29,7 +29,6 @@ const StudentSource = {
   endDrag(props, monitor, Student) {
     const item = monitor.getItem();
     const dropResult = monitor.getDropResult();
-    console.log(props)
     if (dropResult) {
       let alertMessage = '';
       if (dropResult.allowedDropEffect === 'any' || dropResult.allowedDropEffect === dropResult.dropEffect) {
@@ -42,8 +41,9 @@ const StudentSource = {
          student_id: Number(item.studentID),
          room_id: Number(dropResult.roomID)
        }
-        
+
       Student.store.dispatch(addStudentToApt(studentObj))
+      Student.forceUpdate();
       } else {
         alertMessage = 'You are just the right age.'
         alertMessage = `You cannot ${dropResult.dropEffect} an item into the ${dropResult.name}`;
@@ -63,19 +63,19 @@ class Student extends Component {
     name: PropTypes.string.isRequired,
   };
 
-  
+
   render() {
-   
+
     const { isDragging, connectDragSource } = this.props;
     const { name } = this.props;
     const opacity = isDragging ? 0.4 : 1;
-    
+
     return (
       connectDragSource(
         <div className="aptcard-button">
           <img src="https://s3.amazonaws.com/37assets/svn/1065-IMG_2529.jpg" className="aptcard-image" />
           {this.props.name}, {this.props.age} <br />
-          {this.props.gender} <br />S.ID: {this.props.id} <br/>
+          {this.props.gender} <br />
         </div>,
       )
     );

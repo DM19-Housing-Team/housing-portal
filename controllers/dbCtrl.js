@@ -186,6 +186,7 @@ module.exports = {
         })
     },
     EditStudent: function(req,res,next){
+      console.log("address" ,req.body.street_address)
         db.edit_student(req.body.id, req.body.cohort_id, req.body.room_id, req.body.first_name, req.body.last_name,
                         req.body.street_address, req.body.city, req.body.state, req.body.country,
                         req.body.post_code, req.body.phone, req.body.email, req.body.slack, req.body.dob,
@@ -193,7 +194,6 @@ module.exports = {
                         req.body.housing_eligibility, req.body.deposit_paid, req.body.accomodations,
                         req.body.notes,  function(err, prod) {
             db.get_students(function(err, prod) {
-                console.log(prod);
                 res.status(200).send(prod);
             })
         })
@@ -211,20 +211,19 @@ module.exports = {
     StudentRoomAssign: function(req,res,next) {
         db.count_beds(req.body.room_id, 1, function(err, prod) {
             db.occupy_bed(req.body.student_id, req.body.room_id, function(err, prod) {
-                db.get_students(function(err, prod) { 
+                db.get_students(function(err, prod) {
                     res.status(200).send(prod);
-                }) 
+                })
             })
         })
     },
     StudentRoomVacate: function(req,res,next) {
         db.count_beds(req.body.room_id, -1, function(err, prod) {
              db.open_bed(req.body.student_id, function(err, prod) {
-                db.get_students(function(err, prod) { 
+                db.get_students(function(err, prod) {
                     res.status(200).send(prod);
-                })    
+                })
             })
         })
     }
 }
-
