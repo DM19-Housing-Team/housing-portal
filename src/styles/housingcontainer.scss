@@ -108,3 +108,14 @@
     opacity: 1;
     transition: all .2s;
 }
+
+.student-container {
+    width: 15%;
+    color: #fff;
+    background-color: $dark-gray;
+    text-align:center;
+    border-radius: 0 0 10px 10px;
+    font-family: "Nunito", sans-serif;
+    display: flex;
+    align-items: center;
+}

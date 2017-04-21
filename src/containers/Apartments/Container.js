@@ -147,6 +147,7 @@ class Container extends Component {
             {apartmentsList}
           </Accordion>
           <div className="housing-container">
+
             {students}
           </div>
         </div>

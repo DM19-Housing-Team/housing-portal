@@ -8,18 +8,18 @@
     padding-right: 75px;
     padding-left: 75px;
     text-align:center;
-    margin: auto;
+    margin-left: 80px;
     border-radius: 0 0 10px 10px;
     font-family: "Nunito", sans-serif;
+    font-size: 1.7rem;
 }  
 
 .filter-container ul {
         display:flex;
-        justify-content: space-around;
+        justify-content: space-between;
         list-style: none;
         padding-bottom: 18px;
         padding-top: 18px;
-        
 }
 
 
@@ -27,4 +27,18 @@
     font-weight: bold;
     margin-top: 0;
     color: #000;
+}
+
+
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.container p {
+    font-family: "Nunito", sans-serif;
+    font-weight: bold;
+    font-size: 1.6rem;
 }
