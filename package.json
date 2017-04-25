@@ -49,6 +49,6 @@
   },
   "scripts": {
     "start": "node",
-    "postinstall": "npm install && webpack build"
+    "postinstall": "npm install && webpack -p"
   }
 }
