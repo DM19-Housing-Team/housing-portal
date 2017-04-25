@@ -2,18 +2,18 @@ var express = require('express');
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var cors = require('cors');
-var config = require('./config');
+//var config = require('./config');
 var path = require("path");
 var controller = require('./controllers/dbCtrl');
 
 var app = express();
-var port = 3006;
+var port = process.env.PORT;
 
 app.use(express.static(__dirname + "/build"));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
-app.use(session({"secret": config.sessionSecret}));
+app.use(session({"secret": process.env.sessionSecret}));
 
 // many of these functions won't be used in the final product,
 // some will be replaced by more comprehensive, encompassing queries

@@ -24,7 +24,7 @@ class ApartmentListFilter extends Component {
        
             <div className="filter-container">
                 <ul>
-                    <li>Campus <br /><CampusSelector handleChange={ this.handleChange.bind(this, this.props.campus_id)} /></li> 
+                    {/*<li>Campus <br /><CampusSelector handleChange={ this.handleChange.bind(this, this.props.campus_id)} /></li> */}
                     <li><input type="checkbox" name="over_21" value={ this.props.over_21 } onChange={ this.handleChange.bind(this, !this.props.over_21) } /> 21+ </li>
                     <li><input type="checkbox" name="open" value={ this.props.open } onChange={ this.handleChange.bind(this, !this.props.open)} /> Open </li>
                     <li><select name="preferred_gender" defaultValue="" onChange={ this.handleChange.bind(this, this.props.preferred_gender) }>
