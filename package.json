@@ -65,7 +65,7 @@
     "webpack-dev-server": "^2.4.2"
   },
   "scripts": {
-    "start": "node",
+    "start": "node index.js",
     "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   }
 }
