@@ -32,18 +32,18 @@ class StudentListFilter extends Component {
         return (
             <div className="filter-container">
                 <ul>
-                    <li>Campus <br />
+                    {/*<li>Campus <br />
                         <CampusSelector handleChange = {this.handleChange.bind(this)} ></CampusSelector>
-                    </li>
+                    </li>*/}
 
 
                     <li>Cohort <br />
                         <CohortSelector handleChange = {this.handleChange.bind(this)} ></CohortSelector>
                     </li>
 
-                <li>
+                    {/*<li>
                         <input type="checkbox" name="housing_eligibility" value={ this.props.housing_eligibility } onChange={ this.handleChecked.bind(this, "housing_eligibility", !this.props.housing_eligibility) } /> Need Housing
-                    </li>
+                    </li>*/}
                     <li>
                         <input type="checkbox" name="deposit" value={ this.props.deposit_paid} onChange={ this.handleChecked.bind(this, "deposit_paid", !this.props.deposit_paid) } /> Deposit Paid
                     </li>

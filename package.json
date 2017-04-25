@@ -48,7 +48,7 @@
     "webpack-dev-server": "^2.4.2"
   },
   "scripts": {
-    "start": "webpack-dev-server --inline",
-    "build": "webpack"
+    "start": "node",
+    "postinstall": "npm install && webpack build"
   }
 }
