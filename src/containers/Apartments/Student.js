@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { DragSource } from 'react-dnd';
-import ItemTypes from './itemTypes';
+import ItemTypes from './ItemTypes';
 import "../../styles/aptstudentcard.scss";
 import {addStudentToApt, removeStudentFromApt} from '../../actions/action_student'
 import {connect} from "react-redux"

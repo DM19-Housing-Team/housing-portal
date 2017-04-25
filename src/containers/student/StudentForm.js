@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Field, reduxForm } from "redux-form";
 import CohortDropdown from "../CohortDropdown";
-import CampusDropdown from "../CampusDropdown";
+import CampusDropdown from "../campusDropdown";
 import { editStudent } from "../../actions/action_student";
 import { Modal, Button, Popover, Tooltip, OverlayTrigger } from "react-bootstrap";
 import "../../styles/StudentModal.scss"
