@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { DropTarget } from 'react-dnd';
-import ItemTypes from './itemTypes';
+import ItemTypes from './ItemTypes';
 import {connect, monitor} from 'react'
 import "../../styles/dndbed.scss";
 
