@@ -31,17 +31,14 @@ export function getAdmins() {
   }
 }
 export function createAdmin(userObj) {
-  console.log(userObj)
   const url = "/api/users";
   const request = axios.post(url, userObj);
-  console.log("getrequest", request)
   return {
     type: CREATE_ADMIN,
     payload: request
   }
 }
 export function deleteAdmin(userId) {
-  console.log("deleteuser", userId)
   const url = "/api/users/" + userId;
   const request = axios.delete(url);
   return {
@@ -76,7 +73,6 @@ export function getCohorts() {
   }
 }
 export function createCohort(cohortObj) {
-  console.log(cohortObj);
   const url = "/api/cohort";
   const request = axios.post(url, cohortObj);
   return {
@@ -130,6 +126,7 @@ export function getStudent() {
 }
 
 export function createStudent(studentObj) {
+  console.log("stuobj", studentObj)
   const url = "/api/student";
   const request = axios.post(url, studentObj)
   return {

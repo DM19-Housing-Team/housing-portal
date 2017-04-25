@@ -5,7 +5,6 @@ import CampusDropdown from "../CampusDropdown";
 
 class NewAddressForm extends Component {
   onSubmit(props) {
-    console.log(props);
     this.props.dispatch(createBuilding(props));
   }
   render() {

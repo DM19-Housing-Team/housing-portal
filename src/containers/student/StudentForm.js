@@ -38,13 +38,18 @@ class StudentForm extends Component {
         </ul>
         <ul className="form-list">
           <li>Slack</li>
+          <li>Gender</li>
           <li>Phone</li>
         </ul>
         <ul className="form-list">
+          <li><Field type="text" component="select" name="gender" placeholder="Gender" >
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+          </Field></li>
           <li><Field type="text" component="input" name="slack" placeholder="Slack" /></li>
           <li><Field type="text" component="input" name="phone" placeholder="Phone" /></li>
         </ul>
-        
+
         <ul className="form-list">
           <li>Street</li>
           <li>City</li>
