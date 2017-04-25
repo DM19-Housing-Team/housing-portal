@@ -66,6 +66,6 @@
   },
   "scripts": {
     "start": "node",
-    "postinstall": "webpack -p"
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   }
 }
