@@ -9,7 +9,7 @@ var controller = require('./controllers/dbCtrl');
 var app = express();
 var port = 3006;
 
-app.use(express.static(__dirname + "/build"));
+app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(bodyParser.urlencoded({extended:true}));
