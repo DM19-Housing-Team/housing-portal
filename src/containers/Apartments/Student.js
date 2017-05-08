@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { DragSource } from 'react-dnd';
-import ItemTypes from './itemTypes';
+import ItemTypes from './ItemTypes';
 import "../../styles/aptstudentcard.scss";
 import {addStudentToApt, removeStudentFromApt} from '../../actions/action_student'
 import {connect} from "react-redux"
@@ -29,7 +29,6 @@ const StudentSource = {
   endDrag(props, monitor, Student) {
     const item = monitor.getItem();
     const dropResult = monitor.getDropResult();
-    console.log(props)
     if (dropResult) {
       let alertMessage = '';
       if (dropResult.allowedDropEffect === 'any' || dropResult.allowedDropEffect === dropResult.dropEffect) {
@@ -42,7 +41,7 @@ const StudentSource = {
          student_id: Number(item.studentID),
          room_id: Number(dropResult.roomID)
        }
-        
+
       Student.store.dispatch(addStudentToApt(studentObj))
       Student.forceUpdate();
       } else {
@@ -64,13 +63,13 @@ class Student extends Component {
     name: PropTypes.string.isRequired,
   };
 
-  
+
   render() {
-   
+
     const { isDragging, connectDragSource } = this.props;
     const { name } = this.props;
     const opacity = isDragging ? 0.4 : 1;
-    
+
     return (
       connectDragSource(
         <div className="aptcard-button">

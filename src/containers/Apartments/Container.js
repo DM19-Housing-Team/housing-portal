@@ -73,17 +73,14 @@ class Container extends Component {
     })
     let studentsWithRooms = this.props.all.map( student => student.id )
     let roomData = this.props.rooms.rooms;
-    console.log(roomData)
 
 
     let apartments = this.props.apartments;
-    console.log(apartments)
     if (apartments[0])
       ["over_21", "preferred_gender", "campus_id"].forEach(filterBy => {
         let filterValue = state[filterBy];
         if (filterValue) {
           apartments = apartments.filter(apartment => {
-            console.log("apart", filterBy, filterValue)
             return apartment[filterBy] == filterValue});
         }
       })

@@ -15,32 +15,32 @@ class CreateNewStudent extends Component {
 
     this.state = {
       open: false,
-      first_name: null,     //
-      last_name: null,      //
-      street_address: null,  //
-      city: null,           //
-      state: null,          //
-      country: null,        //
-      post_code: null,      //
-      phone: null,        //
-      email: null,        //
-      slack: null,        //
-      dob: null,          //
-      gender: null,       //
-      cohort: null,       //
-      car_info: null,
-      arrive_date: null,    //
-      leave_date: null,     //
-      housing_eligibility: null,
-      deposit_paid: null,   //
-      accomodations: null,
-      notes: null,
-      room_id: null,
-      studentLocation: null,
+      first_name: "",     //
+      last_name: "",      //
+      street_address: "",  //
+      city: "",           //
+      state: "",          //
+      country: "",        //
+      post_code: "",      //
+      phone: "",        //
+      email: "",        //
+      slack: "",        //
+      dob: "",          //
+      gender: "",       //
+      cohort: "",       //
+      car_info: "",
+      arrive_date: "",    //
+      leave_date: "",     //
+      housing_eligibility: "",
+      deposit_paid: "",   //
+      accomodations: "",
+      notes: "",
+      room_id: 0,
+      studentLocation: "",
     }
 
-    
-    
+
+
 
     this.handleInputChange = this.handleInputChange.bind(this)
     this.clearData = this.clearData.bind(this)
@@ -112,21 +112,21 @@ class CreateNewStudent extends Component {
 
         const lat2 = this.props.studentLocation.lat;
         const lng2 = this.props.studentLocation.lng;
-        
+
         function distanceLatAndLng(schoolLat,schoolLng,lat2,lng2) {
           const R = 3959; // Radius of the earth in mi
           const dLat = deg2rad(lat2-schoolLat);  // deg2rad below
-          const dLon = deg2rad(lng2-schoolLng); 
-          const a = 
+          const dLon = deg2rad(lng2-schoolLng);
+          const a =
             Math.sin(dLat/2) * Math.sin(dLat/2) +
-            Math.cos(deg2rad(schoolLat)) * Math.cos(deg2rad(lat2)) * 
+            Math.cos(deg2rad(schoolLat)) * Math.cos(deg2rad(lat2)) *
             Math.sin(dLon/2) * Math.sin(dLon/2)
-            ; 
-          const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+            ;
+          const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
           const d = R * c; // Distance in mi
           if (d >= 50) {
            this.state.housing_eligibility = true
-            
+
           } else {
             this.state.housing_eligibility = false
           }

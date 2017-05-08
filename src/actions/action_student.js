@@ -6,7 +6,6 @@ export const EDIT_STUDENT = "EDIT_STUDENT"
 export function getStudents() {
   const url = "/api/student"
   const request = axios.get(url)
-  console.log(request)
   return {
     type: GET_STUDENTS,
     payload: request
@@ -14,7 +13,6 @@ export function getStudents() {
 }
 
 export function editStudent(studentObj) {
-  console.log("obj", studentObj)
   const url = "/api/student";
   const request = axios.put(url, studentObj)
   return {
@@ -32,7 +30,6 @@ export const REMOVE_STUDENT_FROM_APT = 'REMOVE_STUDENT_FROM_APT'
 export function addStudentToApt(studentObj) {
   const url = "/api/room/student";
   const request = axios.put(url, studentObj)
-  console.log("addStudent(studentObj): ", studentObj)
   return {
     type: ADD_STUDENT_TO_APT,
     payload: request
@@ -42,8 +39,6 @@ export function addStudentToApt(studentObj) {
 export function removeStudentFromApt(studentObj) {
   const url = "/api/room/clear";
   const request = axios.put(url, studentObj)
-  console.log("removeStudent(studentObj): ", studentObj)
-  console.log('request', request)
   return {
     type: REMOVE_STUDENT_FROM_APT,
     payload: request

@@ -9,12 +9,10 @@ class AdminForm extends Component {
 
   onSubmit(props) {
     props.id = this.props.id;
-    console.log("adminform props", props)
     this.props.dispatch(editAdmin(props))
   }
 
   handleDelete() {
-    console.log(this.props.id)
     this.props.dispatch(deleteAdmin(this.props.id))
   }
 
